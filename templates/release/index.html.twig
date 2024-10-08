@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Release index{% endblock %}
+
+{% block body %}
+    <h1>Release index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ReleasedAt</th>
+                <th>Title</th>
+                <th>ThumbnailUrl</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for release in releases %}
+            <tr>
+                <td>{{ release.id }}</td>
+                <td>{{ release.releasedAt ? release.releasedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ release.title }}</td>
+                <td>{{ release.thumbnailUrl }}</td>
+                <td>{{ release.type }}</td>
+                <td>
+                    <a href="{{ path('app_release_show', {'id': release.id}) }}">show</a>
+                    <a href="{{ path('app_release_edit', {'id': release.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_release_new') }}" class="btn btn-primary">Create new</a>
+{% endblock %}

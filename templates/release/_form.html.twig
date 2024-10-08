@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.releasedAt) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.type) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.thumbnailUrl) }}
+        </div>
+        <div class="col-md">
+            {{ form_row(form.artist) }}
+        </div>
+    </div>
+{{ form_end(form) }}
