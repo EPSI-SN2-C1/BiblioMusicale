@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('app_artist_edit', {'id': artist.id}) }}">edit</a>
+    <a class="btn btn-primary" href="{{ path('app_artist_edit', {'id': artist.id}) }}">Edit</a>
 
-    <a class="btn btn-secondary" href="{{ path('app_artist_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('app_artist_index') }}">Go back</a>
 
     {{ include('artist/_delete_form.html.twig') }}
 {% endblock %}
