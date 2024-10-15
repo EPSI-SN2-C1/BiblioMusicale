@@ -40,6 +40,7 @@ class ReleaseType extends AbstractType
                 ],
             ])
             ->add('artist', EntityType::class, [
+                'label' => 'Artist',
                 'class' => Artist::class,
                 'choice_label' => 'name',
                 'query_builder' => function (ArtistRepository $er) {
