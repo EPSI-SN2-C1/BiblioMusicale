@@ -1,6 +1,6 @@
 {{ form_start(form) }}
     {# {{ form_widget(form) }} #}
-    <div class="row">
+    <div class="column">
         <div class="col-md-3">
             {{ form_row(form.title) }}
         </div>
@@ -17,4 +17,6 @@
             {{ form_row(form.artist) }}
         </div>
     </div>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    <a href="{{ path('app_release_index') }}" class="btn btn-secondary">Go back</a> 
 {{ form_end(form) }}

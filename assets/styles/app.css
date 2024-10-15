@@ -12,3 +12,7 @@ footer {
     text-decoration: none;
     margin: 0 10px;
 }
+
+.track-list > li:nth-child(odd) {
+    background-color: #4c4c4c;
+}

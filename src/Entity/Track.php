@@ -58,6 +58,23 @@ class Track
         return $this->duration;
     }
 
+    public function getReadableDuration(): ?string
+    {
+        if ($this->duration === null) {
+            return null;
+        }
+
+        $hours = intdiv($this->duration, 3600);
+        $minutes = intdiv($this->duration % 3600, 60);
+        $seconds = $this->duration % 60;
+
+        if ($hours > 0) {
+            return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
+        }
+
+        return sprintf('%02d:%02d', $minutes, $seconds);
+    }
+
     public function setDuration(int $duration): static
     {
         $this->duration = $duration;

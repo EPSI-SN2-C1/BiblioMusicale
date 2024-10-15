@@ -19,12 +19,13 @@ class TrackType extends AbstractType
             ->add('duration')
             ->add('featuredArtists', EntityType::class, [
                 'class' => Artist::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'multiple' => true,
+                'required' => false,
             ])
             ->add('release', EntityType::class, [
                 'class' => Release::class,
-                'choice_label' => 'id',
+                'choice_label' => 'title',
             ])
         ;
     }
