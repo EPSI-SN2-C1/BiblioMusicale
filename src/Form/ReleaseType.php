@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Repository\ArtistRepository;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,7 +26,7 @@ class ReleaseType extends AbstractType
                     'placeholder' => 'Enter the release title',
                 ],
             ])
-            ->add('thumbnailUrl', null, [
+            ->add('thumbnailUrl', UrlType::class, [
                 'label' => 'Thumbnail URL',
                 'attr' => [
                     'placeholder' => 'Enter the thumbnail URL',
@@ -33,9 +34,9 @@ class ReleaseType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 'choices'  => [
-                    'EP' => 'ep',
-                    'Album' => 'album',
-                    'Single' => 'single',
+                    'EP' => Release::EP,
+                    'Album' => Release::ALBUM,
+                    'Single' => Release::SINGLE,
                 ],
             ])
             ->add('artist', EntityType::class, [

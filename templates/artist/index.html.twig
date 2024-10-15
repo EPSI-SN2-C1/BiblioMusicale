@@ -3,7 +3,14 @@
 {% block title %}Artist index{% endblock %}
 
 {% block body %}
-    <h1>Artist index</h1>
+    <div class="row mb-3 align-items-center mt-5">
+        <div class="col">
+            <h1>Artist index</h1>
+        </div>
+        <div class="col text-end">
+            <a href="{{ path('app_artist_new') }}" class="btn btn-primary">Create new</a>
+        </div>
+    </div>
 
     <div class="row g-2 mb-4">
         {% for artist in artists %}
@@ -25,5 +32,5 @@
         {% endfor %}
     </div>
 
-    <a href="{{ path('app_artist_new') }}" class="btn btn-primary">Create new</a>
+    {# <a href="{{ path('app_artist_new') }}" class="btn btn-primary">Create new</a> #}
 {% endblock %}

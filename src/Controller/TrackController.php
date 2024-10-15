@@ -10,11 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/track')]
 final class TrackController extends AbstractController
 {
     #[Route(name: 'app_track_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(TrackRepository $trackRepository): Response
     {
         return $this->render('track/index.html.twig', [

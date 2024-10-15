@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ReleaseRepository::class)]
 class Release
 {
+
+    public const ALBUM = 1;
+    public const EP = 2;
+    public const SINGLE = 3;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
