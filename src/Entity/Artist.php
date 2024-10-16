@@ -33,6 +33,10 @@ class Artist
     #[ORM\ManyToMany(targetEntity: Track::class, inversedBy: 'featuredArtists')]
     private Collection $featuredIn;
 
+    #[ORM\ManyToOne(inversedBy: 'artists')]
+    #[ORM\JoinColumn(nullable: false, options: ['default' => 1])]
+    private ?User $owner = null;
+
     public function __construct()
     {
         $this->releases = new ArrayCollection();
@@ -118,6 +122,18 @@ class Artist
     public function removeFeaturedIn(Track $featuredIn): static
     {
         $this->featuredIn->removeElement($featuredIn);
+
+        return $this;
+    }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
 
         return $this;
     }
