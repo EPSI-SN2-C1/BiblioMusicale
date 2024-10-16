@@ -40,4 +40,14 @@ class ReleaseRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findByOwner($owner): array
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.artist', 'a')
+            ->andWhere('a.owner IN (:owner)')
+            ->setParameter('owner', $owner)
+            ->getQuery()
+            ->getResult();
+    }
 }

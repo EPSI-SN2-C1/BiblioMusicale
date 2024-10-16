@@ -19,8 +19,7 @@ final class ReleaseController extends AbstractController
     public function index(ReleaseRepository $releaseRepository): Response
     {
         return $this->render('release/index.html.twig', [
-            'releases' => $releaseRepository->findAll(),
-        ]);
+            'releases' => $releaseRepository->findByOwner($this->getUser()),]);
     }
 
     #[Route('/new', name: 'app_release_new', methods: ['GET', 'POST'])]
