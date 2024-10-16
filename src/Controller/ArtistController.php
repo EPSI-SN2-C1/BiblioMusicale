@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Artist;
 use App\Form\ArtistType;
 use App\Repository\ArtistRepository;
+use App\Security\Voter\ArtistVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,6 +46,7 @@ final class ArtistController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_artist_show', methods: ['GET'])]
+    #[IsGranted(ArtistVoter::VIEW, subject: 'artist')]
     public function show(Artist $artist): Response
     {
         return $this->render('artist/show.html.twig', [
