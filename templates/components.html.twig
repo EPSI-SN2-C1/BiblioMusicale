@@ -1,0 +1,18 @@
+{% macro card(title, subtitle, href, img_src, img_alt) %}
+<div class="card">
+    <div class="ratio ratio-1x1">
+        <img src="{{ img_src }}" class="card-img-top object-fit-cover" alt="{{ img_alt }}">
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title">{{ title }}</h5>
+        <p class="card-text">{{ subtitle }}</p>
+        {{ _self.btn("Show", "primary", href) }}
+    </div>
+</div>
+
+{% endmacro %}
+
+{% macro btn(label, theme, href, size = "md") %}
+    <a href="{{ href }}" class="btn btn-{{ theme }} btn-{{size}}">{{ label }}</a>
+{% endmacro %}

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% import 'components.html.twig' as comp %}
 {% block title %}Release index{% endblock %}
 
 {% block body %}
@@ -18,7 +18,16 @@
         </thead>
         <tbody>
         {% for release in releases %}
-            <tr>
+        <div class="col-sm-4 col-md-3">
+            {{ comp.card(
+                release.title,
+                release.type,
+                path('app_release_show', {'id': release.id}),
+                release.thumbnailUrl,
+                release.title
+            ) }}
+        </div>
+            {# <tr>
                 <td>{{ release.id }}</td>
                 <td>{{ release.releasedAt ? release.releasedAt|date('Y-m-d') : '' }}</td>
                 <td>{{ release.title }}</td>
@@ -28,7 +37,7 @@
                     <a href="{{ path('app_release_show', {'id': release.id}) }}">show</a>
                     <a href="{{ path('app_release_edit', {'id': release.id}) }}">edit</a>
                 </td>
-            </tr>
+            </tr> #}
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>

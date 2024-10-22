@@ -40,4 +40,14 @@ class TrackRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findByOwner($owner): array{
+    return $this->createQueryBuilder('t')
+        ->join('t.release', 'r')
+        ->join('r.artist', 'a')
+        ->andWhere('a.owner IN (:owner)')
+        ->setParameter('owner', $owner)
+        ->getQuery()
+        ->getResult();
+    }
 }

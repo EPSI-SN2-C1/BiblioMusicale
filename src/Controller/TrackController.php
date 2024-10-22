@@ -16,15 +16,15 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class TrackController extends AbstractController
 {
     #[Route(name: 'app_track_index', methods: ['GET'])]
-    #[IsGranted('ROLE_ADMIN')]
     public function index(TrackRepository $trackRepository): Response
     {
         return $this->render('track/index.html.twig', [
-            'tracks' => $trackRepository->findAll(),
+            'tracks' => $trackRepository->findByOwner($this->getUser()),
         ]);
     }
 
     #[Route('/new', name: 'app_track_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $track = new Track();
